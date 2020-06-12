@@ -23,7 +23,7 @@ class Search
         return (array) json_decode($get);
     }
 
-    public function getCep(string $cep): array
+    public function getCep(string $cep): array 
     {
         $url =  "https://viacep.com.br/ws/";
 

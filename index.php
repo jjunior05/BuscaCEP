@@ -1,6 +1,8 @@
 <?php
 
-/*Necessário gerar uma configuração de autroload no 'composer.json' "autoload": {
+/*
+--composer init
+Necessário gerar uma configuração de autoload no 'composer.json' "autoload": {
         "psr-0": {
             "Search": "src/"
         },
