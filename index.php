@@ -1,7 +1,8 @@
 <?php
 
 /*
---composer init
+-- composer init
+-- composer.phar update update nos pacotes do composer
 Necessário gerar uma configuração de autoload no 'composer.json' "autoload": {
         "psr-0": {
             "Search": "src/"
