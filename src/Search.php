@@ -6,32 +6,31 @@ class Search
 {
 
 
-    public function getCepUF(string $uf): array
+    public function getCep(string $tipo, string $valor): array
     {
+
         $opts = array('http' =>
         array(
             'method'  => 'GET',
             'header'  => 'Accept: application/json'
         ));
-
         $context = stream_context_create($opts);
 
-        $url =  "http://cep.la/api/GET/";
-
-        $get = file_get_contents($url . $uf, false, $context);
+        $get = file_get_contents($this->getUrl($tipo, $valor), false, $context);
 
         return (array) json_decode($get);
     }
 
-    public function getCep(string $cep): array 
+    private function getUrl(string $tipo, string $valor): string
     {
-        $url =  "https://viacep.com.br/ws/";
-
-        $cep = preg_replace('/[^0-9]/im', '', $cep);
-        $cep = rawurlencode($cep);
-
-        $get = file_get_contents($url . $cep . "/json");
-
-        return (array) json_decode($get);
+        $url = '';
+        if ($tipo == 'uf') {
+            return $url =  "http://cep.la/api/GET/" . $valor;
+        }
+        if ($tipo == 'cep') {
+            $cep = preg_replace('/[^0-9]/im', '', $valor);
+            $cep = rawurlencode($cep);
+            return $url =  "https://viacep.com.br/ws/" . $valor . "/json";
+        }
     }
 }
